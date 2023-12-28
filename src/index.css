@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Irish Grover", sans-serif;
   line-height: 1.5;
-  font-weight: 400;
 
   color: #213547;
   background-color: #ffffff;
@@ -29,4 +28,36 @@ a:hover {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+.boton {
+  border: 5px solid #94dcec;
+  background: radial-gradient(
+    95.55% 95.46% at 50% 50%,
+    #5ff0fa 0%,
+    #df0ff1 68.94%
+  );
+  box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.25) inset,
+    -4px -4px 10px 0px rgba(0, 0, 0, 0.25) inset,
+    0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.boton:active {
+  border: 5px solid #94dcec;
+  background: radial-gradient(
+    95.55% 95.46% at 50% 50%,
+    #61f6ff 0%,
+    #4d0071 67.47%
+  );
+  box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.25) inset,
+    -4px -4px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.boton:disabled,
+.button[disabled] {
+  background: radial-gradient(
+    95.55% 95.46% at 50% 50%,
+    #fff 0%,
+    #878388 67.47%
+  );
 }

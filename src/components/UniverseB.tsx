@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CombinationDrawer from "./CombinationDrawer";
 import { Board } from "../logic";
+import Button from "./Button";
 
 type UniverseProps = {
   game: {
@@ -40,24 +41,19 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
                 setCombination={setGuess}
                 matchStatus={matchStatus}
               />
-              <button
-                className="bg-red-400 p-2 w-full rounded-xl hover:bg-red-500 font-bold disabled:bg-red-400"
-                disabled={isDisabled}
-                onClick={handleSendSolution}
-              >
-                Send Solution
-              </button>
+              <Button disabled={isDisabled} onClick={handleSendSolution}>
+                Enviar solución
+              </Button>
             </>
           ) : !changeSent ? (
-            <button
+            <Button
               onClick={() => {
                 Rune.actions.swapUniverses();
                 setChangeSent(true);
               }}
-              className="w-full p-2 bg-violet-500 rounded-xl"
             >
               Cambiar
-            </button>
+            </Button>
           ) : (
             <div>Esperando a que tu compañero finalize</div>
           )}
@@ -74,15 +70,14 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
       ) : (
         <div className=" flex flex-col gap-4">
           {!changeSent ? (
-            <button
+            <Button
               onClick={() => {
                 Rune.actions.swapUniverses();
                 setChangeSent(true);
               }}
-              className="w-full p-2 bg-violet-500 rounded-xl"
             >
               Cambiar
-            </button>
+            </Button>
           ) : (
             <div>Esperando a que tu compañero finalize</div>
           )}
