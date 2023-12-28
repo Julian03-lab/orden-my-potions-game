@@ -42,7 +42,7 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
                 matchStatus={matchStatus}
               />
               <Button disabled={isDisabled} onClick={handleSendSolution}>
-                Enviar solución
+                Send Solution
               </Button>
             </>
           ) : !changeSent ? (
@@ -52,7 +52,7 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
                 setChangeSent(true);
               }}
             >
-              Cambiar
+              Change Room
             </Button>
           ) : (
             <div>Esperando a que tu compañero finalize</div>
@@ -76,7 +76,7 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
                 setChangeSent(true);
               }}
             >
-              Cambiar
+              Change Room
             </Button>
           ) : (
             <div>Esperando a que tu compañero finalize</div>

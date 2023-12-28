@@ -52,7 +52,7 @@ const UniverseA = ({ game: { board, matchStatus } }: UniverseProps) => {
                 setChangeSent(true);
               }}
             >
-              Cambiar
+              Change Room
             </Button>
           ) : (
             <div>Esperando a que tu compañero finalize</div>
@@ -76,7 +76,7 @@ const UniverseA = ({ game: { board, matchStatus } }: UniverseProps) => {
                 setChangeSent(true);
               }}
             >
-              Cambiar
+              Change Room
             </Button>
           ) : (
             <div>Esperando a que tu compañero finalize</div>
