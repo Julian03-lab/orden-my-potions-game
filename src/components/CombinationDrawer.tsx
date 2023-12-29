@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Board } from "../logic";
-import selectSFX from "../assets/select.mp3";
+import EstanteImage from "../assets/images/estante.png";
+import GreenPotion from "../assets/images/greenPotion.png";
+import PurplePotion from "../assets/images/pinkPotion.png";
+import BluePotion from "../assets/images/bluePotion.png";
+import EmptyPotion from "../assets/images/emptyPotion.png";
 
 type CombinationDrawerProps = {
   combination: Board;
@@ -10,16 +14,20 @@ type CombinationDrawerProps = {
 
 const colors = ["red", "blue", "green", "orange", "purple"];
 
-const statusToColor = (status: "empty" | "parcial" | "correct" | "wrong") => {
-  switch (status) {
-    case "empty":
-      return "gray";
-    case "parcial":
-      return "yellow";
-    case "correct":
-      return "green";
-    case "wrong":
-      return "red";
+const colorToImage = (color: string) => {
+  switch (color) {
+    case "red":
+      return GreenPotion;
+    case "blue":
+      return BluePotion;
+    case "green":
+      return GreenPotion;
+    case "orange":
+      return GreenPotion;
+    case "purple":
+      return PurplePotion;
+    default:
+      return EmptyPotion;
   }
 };
 
@@ -28,65 +36,98 @@ const CombinationDrawer = ({
   setCombination,
   matchStatus = "playing",
 }: CombinationDrawerProps) => {
-  const [index, setIndex] = useState<null | number>(null);
-  const selectSound = new Audio(selectSFX);
+  const [selectedColor, setSelectedColor] = useState<string>("");
 
-  const handleOpenSelector = (i: number) => {
-    if (index === null || index !== i) {
-      setIndex(i);
-    } else {
-      setIndex(null);
-    }
+  const handleSelection = (index: number) => {
+    if (selectedColor === "") return;
+    setCombination &&
+      matchStatus === "playing" &&
+      setCombination((prev) => {
+        const newCombination = [...prev];
+        newCombination[index] = {
+          ...newCombination[index],
+          color: selectedColor,
+        };
+        setSelectedColor("");
+        return newCombination;
+      });
   };
+
+  // const handleDragStart = (value: string) => {
+  //   setSelectedColor(value);
+  // };
+
+  // const handleDragOver = (event: React.DragEvent<HTMLButtonElement>) => {
+  //   event.preventDefault();
+  // };
+
+  // const handleDrop = (index: number) => {
+  //   setCombination &&
+  //     selectedColor !== "" &&
+  //     matchStatus === "playing" &&
+  //     setCombination((prev) => {
+  //       const newCombination = [...prev];
+  //       newCombination[index] = {
+  //         ...newCombination[index],
+  //         color: selectedColor,
+  //       };
+  //       setSelectedColor("");
+  //       return newCombination;
+  //     });
+  // };
 
   return (
     <>
-      {index !== null && (
+      {setCombination && (
         <div className="bg-red-400/80 flex w-full justify-between p-2 border border-black rounded-xl">
           {colors.map((color) => (
             <button
               key={color}
-              className={`size-8 rounded-full ${
-                setCombination !== null ? "cursor-pointer" : "cursor-default"
-              }`}
-              style={{ backgroundColor: color }}
               onClick={() => {
-                setCombination &&
-                  setCombination((prev) => {
-                    const newCombination = [...prev];
-                    newCombination[index] = {
-                      ...newCombination[index],
-                      color,
-                    };
-                    setIndex(null);
-                    selectSound.play();
-                    return newCombination;
-                  });
+                if (selectedColor === color) {
+                  setSelectedColor("");
+                } else {
+                  setSelectedColor(color);
+                }
               }}
-            />
+              // draggable={true}
+              // onDragStart={() => handleDragStart(color)}
+            >
+              <img
+                className={`w-10 h-auto ${
+                  color === selectedColor ? "glow" : ""
+                }`}
+                src={colorToImage(color)}
+              />
+            </button>
           ))}
         </div>
       )}
-      <div className="bg-slate-500 flex w-full justify-between p-2 border border-black rounded-xl">
-        {combination.map(({ color, status }, i) => (
-          <button
-            key={i}
-            className={`size-8 rounded-full border-[3px] ${
-              setCombination && matchStatus === "playing"
-                ? "cursor-pointer"
-                : "cursor-default"
-            }`}
-            style={{
-              backgroundColor: color,
-              borderColor: statusToColor(status),
-            }}
-            onClick={() => {
-              matchStatus === "playing" &&
-                setCombination &&
-                handleOpenSelector(i);
-            }}
-          />
-        ))}
+      <div className="flex flex-col w-full">
+        <div className="flex w-full justify-between px-2">
+          {combination.map(({ color, status }, i) => (
+            <button
+              key={i}
+              onClick={() => handleSelection(i)}
+              // draggable={false}
+              // onDragOver={handleDragOver}
+              // onDrop={() => handleDrop(i)}
+            >
+              <img
+                className={`w-10 h-auto ${status} z-10 relative`}
+                src={colorToImage(color)}
+              />
+            </button>
+          ))}
+        </div>
+        <img
+          src={EstanteImage}
+          alt="Estante"
+          className="w-full h-auto relative -top-1 z-0"
+          style={{
+            filter: "drop-shadow(0px 12px 11px rgba(0, 0, 0, 1))",
+          }}
+        />
       </div>
     </>
   );

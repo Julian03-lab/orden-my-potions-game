@@ -30,10 +30,18 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
     guess.some((item) => item.color === "gray") || matchStatus === "waiting";
 
   return (
-    <div className="flex flex-col gap-4 items-center">
+    <div
+      className="flex flex-col gap-4 items-center min-h-screen h-full px-4 pt-12 w-full bg-gradient-to-br from-orange-600 to-orange-500"
+      style={{
+        // backgroundImage: `url(test-bg.png)`,
+        backgroundSize: "",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "left",
+      }}
+    >
       {matchStatus === "playing" || matchStatus === "waiting" ? (
         <>
-          <h1 className="text-center">This is the universe B!</h1>
+          <h1 className="text-center text-white">This is the universe B!</h1>
           {!guessSent ? (
             <>
               <CombinationDrawer
@@ -58,12 +66,14 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
             <div>Esperando a que tu compañero finalize</div>
           )}
           <div className="w-full flex flex-col-reverse gap-2">
-            {board.map((row, i) =>
-              i < board.length - 1 || matchStatus !== "waiting" ? (
+            {board.map(
+              (row, i) => (
+                // i < board.length - 1 || matchStatus !== "waiting" ? (
                 <CombinationDrawer key={i} combination={row} />
-              ) : (
-                <div key={i}>Esto esta oculta hasta la proxima ronda</div>
               )
+              // ) : (
+              //   <div key={i}>Esto esta oculta hasta la proxima ronda</div>
+              // )
             )}
           </div>
         </>

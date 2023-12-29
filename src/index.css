@@ -61,3 +61,23 @@ h1 {
     #878388 67.47%
   );
 }
+
+.wrong {
+  -webkit-filter: drop-shadow(2px 1px 0 red) drop-shadow(-1px -1px 0 red);
+  filter: drop-shadow(2px 1px 0 red) drop-shadow(-1px -1px 0 red);
+}
+
+.parcial {
+  -webkit-filter: drop-shadow(2px 1px 0 yellow) drop-shadow(-1px -1px 0 yellow);
+  filter: drop-shadow(2px 1px 0 yellow) drop-shadow(-1px -1px 0 yellow);
+}
+
+.correct {
+  -webkit-filter: drop-shadow(2px 1px 0 green) drop-shadow(-1px -1px 0 green);
+  filter: drop-shadow(2px 1px 0 green) drop-shadow(-1px -1px 0 green);
+}
+
+.glow {
+  -webkit-filter: drop-shadow(0px 0px 3px yellow);
+  filter: drop-shadow(0px 0px 3px yellow);
+}
