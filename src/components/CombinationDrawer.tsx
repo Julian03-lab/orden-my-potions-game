@@ -4,6 +4,8 @@ import EstanteImage from "../assets/images/estante.png";
 import GreenPotion from "../assets/images/greenPotion.png";
 import PurplePotion from "../assets/images/pinkPotion.png";
 import BluePotion from "../assets/images/bluePotion.png";
+import YellowPotion from "../assets/images/yellowPotion.png";
+import RedPotion from "../assets/images/redPotion.png";
 import EmptyPotion from "../assets/images/emptyPotion.png";
 
 type CombinationDrawerProps = {
@@ -17,13 +19,13 @@ const colors = ["red", "blue", "green", "orange", "purple"];
 const colorToImage = (color: string) => {
   switch (color) {
     case "red":
-      return GreenPotion;
+      return RedPotion;
     case "blue":
       return BluePotion;
     case "green":
       return GreenPotion;
     case "orange":
-      return GreenPotion;
+      return YellowPotion;
     case "purple":
       return PurplePotion;
     default:
@@ -52,29 +54,6 @@ const CombinationDrawer = ({
         return newCombination;
       });
   };
-
-  // const handleDragStart = (value: string) => {
-  //   setSelectedColor(value);
-  // };
-
-  // const handleDragOver = (event: React.DragEvent<HTMLButtonElement>) => {
-  //   event.preventDefault();
-  // };
-
-  // const handleDrop = (index: number) => {
-  //   setCombination &&
-  //     selectedColor !== "" &&
-  //     matchStatus === "playing" &&
-  //     setCombination((prev) => {
-  //       const newCombination = [...prev];
-  //       newCombination[index] = {
-  //         ...newCombination[index],
-  //         color: selectedColor,
-  //       };
-  //       setSelectedColor("");
-  //       return newCombination;
-  //     });
-  // };
 
   return (
     <>
