@@ -30,14 +30,16 @@ const UniverseA = ({ game: { board, matchStatus } }: UniverseProps) => {
     guess.some((item) => item.color === "gray") || matchStatus === "waiting";
 
   return (
-    <div
-      className="flex flex-col gap-4 items-center min-h-screen h-full px-4 pt-12 w-full bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400"
-      style={{
-        // backgroundImage: `url(wood-bg.jpg)`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <div className="flex flex-col gap-4 items-center min-h-screen h-full px-4 pt-12 w-full bg-black/50">
+      <div
+        className="w-full h-full absolute top-0 left-0 -z-10"
+        style={{
+          backgroundImage: `url(bg-1.png)`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      />
       {matchStatus === "playing" || matchStatus === "waiting" ? (
         <>
           <h1 className="text-center text-white">This is the universe A!</h1>

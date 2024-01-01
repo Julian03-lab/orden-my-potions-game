@@ -23,7 +23,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col bg-slate-600 items-center min-h-screen justify-between">
+    <div className="flex flex-col items-center min-h-screen justify-between">
       {actualUniverse === 0 ? (
         <UniverseA game={game.universe[0]} />
       ) : (
