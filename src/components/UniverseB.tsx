@@ -2,6 +2,7 @@ import { useState } from "react";
 import CombinationDrawer from "./CombinationDrawer";
 import { Board } from "../logic";
 import Button from "./Button";
+import Character from "./Character";
 
 type UniverseProps = {
   game: {
@@ -30,9 +31,9 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
     guess.some((item) => item.color === "gray") || matchStatus === "waiting";
 
   return (
-    <div className="flex flex-col gap-4 items-center min-h-screen h-full px-4 pt-12 w-full bg-black/50">
+    <div className="flex flex-col gap-4 items-center min-h-screen h-full px-4 py-8 w-full bg-black/50">
       <div
-        className="w-full h-full absolute top-0 left-0 -z-10"
+        className="w-full h-full fixed top-0 left-0 -z-10"
         style={{
           backgroundImage: `url(bg-2.png)`,
           backgroundSize: "cover",
@@ -42,7 +43,10 @@ const UniverseB = ({ game: { board, matchStatus } }: UniverseProps) => {
       />
       {matchStatus === "playing" || matchStatus === "waiting" ? (
         <>
-          <h1 className="text-center text-white">This is the universe B!</h1>
+          <Character
+            dialog="Ten cuidado al ordenar mis pociones"
+            direction="right"
+          />
           {!guessSent ? (
             <>
               <CombinationDrawer
