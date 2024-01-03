@@ -5,6 +5,7 @@ import Button from "./Button";
 import Character from "./Character";
 
 type UniverseProps = {
+  children: React.ReactNode;
   game: {
     board: Board[];
     matchStatus: "win" | "lose" | "playing" | "waiting";
@@ -12,7 +13,10 @@ type UniverseProps = {
   };
 };
 
-const UniverseA = ({ game: { board, matchStatus } }: UniverseProps) => {
+const UniverseA = ({
+  game: { board, matchStatus },
+  children,
+}: UniverseProps) => {
   const [guess, setGuess] = useState<Board>(
     Array(5).fill({
       status: "empty",
@@ -43,7 +47,7 @@ const UniverseA = ({ game: { board, matchStatus } }: UniverseProps) => {
       />
       {matchStatus === "playing" || matchStatus === "waiting" ? (
         <>
-          <Character dialog="Tu compañero ya finalizo su turno..." />
+          {children}
           {!guessSent ? (
             <>
               <CombinationDrawer
@@ -55,17 +59,17 @@ const UniverseA = ({ game: { board, matchStatus } }: UniverseProps) => {
                 Send Solution
               </Button>
             </>
-          ) : !changeSent ? (
-            <Button
-              onClick={() => {
-                Rune.actions.swapUniverses();
-                setChangeSent(true);
-              }}
-            >
-              Change Room
-            </Button>
           ) : (
-            <div>Esperando a que tu compañero finalize</div>
+            !changeSent && (
+              <Button
+                onClick={() => {
+                  Rune.actions.swapUniverses();
+                  setChangeSent(true);
+                }}
+              >
+                Vote to Change Room
+              </Button>
+            )
           )}
           <div className="w-full flex flex-col-reverse gap-2">
             {board.map(

@@ -15,7 +15,7 @@ const Character = ({ dialog, direction }: CharacterProps) => {
         alt="Cabeza del mago"
         className={`w-28 ${direction === "right" && "-scale-x-[1]"}`}
       />
-      <p className="w-full bg-white text-center py-2 px-1 rounded-3xl text-slate-800">
+      <p className="w-full bg-white text-center py-2 px-1 rounded-2xl text-slate-800">
         {dialog}
       </p>
     </div>

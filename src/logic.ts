@@ -1,5 +1,6 @@
 import type { RuneClient } from "rune-games-sdk/multiplayer";
 import { checkResults } from "./utils/checkResults";
+import { characterDialogs } from "./assets/dialogs";
 
 const CELLS = 5;
 
@@ -21,6 +22,8 @@ export interface GameState {
   };
   votesToSwap: number;
   gameFinished: boolean;
+  dialog: string;
+  solutionsNumber: number;
 }
 
 type GameActions = {
@@ -44,8 +47,10 @@ Rune.initLogic({
   maxPlayers: 2,
   setup: (allPlayerIds): GameState => {
     const game: GameState = {
+      solutionsNumber: 0,
       gameFinished: false,
       votesToSwap: 0,
+      dialog: characterDialogs.playing,
       players: {},
       universe: {
         0: {
@@ -97,6 +102,8 @@ Rune.initLogic({
           : "win";
 
       game.votesToSwap = 0;
+      game.dialog = characterDialogs.playing;
+      game.solutionsNumber = 0;
     },
 
     sendSolution(guess, { game, playerId, allPlayerIds }) {
@@ -110,6 +117,14 @@ Rune.initLogic({
       game.universe[playerUniverse].board.push(newBoard);
 
       game.universe[playerUniverse].matchStatus = newStatus;
+
+      game.solutionsNumber++;
+
+      if (game.solutionsNumber === 2) {
+        game.dialog = characterDialogs.secondSent;
+      } else {
+        game.dialog = characterDialogs.firstSent;
+      }
 
       if (Object.values(game.universe).every((u) => u.matchStatus === "win")) {
         game.gameFinished = true;

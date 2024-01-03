@@ -3,6 +3,7 @@ import { GameState } from "./logic.ts";
 import UniverseA from "./components/UniverseA.tsx";
 import UniverseB from "./components/UniverseB.tsx";
 import GameFinished from "./components/GameFinished.tsx";
+import Character from "./components/Character.tsx";
 
 function App() {
   const [game, setGame] = useState<GameState>();
@@ -25,9 +26,13 @@ function App() {
   return (
     <div className="flex flex-col items-center min-h-screen justify-between">
       {actualUniverse === 0 ? (
-        <UniverseA game={game.universe[0]} />
+        <UniverseA game={game.universe[0]}>
+          <Character dialog={game.dialog} />
+        </UniverseA>
       ) : (
-        <UniverseB game={game.universe[1]} />
+        <UniverseB game={game.universe[1]}>
+          <Character dialog={game.dialog} />
+        </UniverseB>
       )}
       {game.gameFinished && <GameFinished />}
     </div>
