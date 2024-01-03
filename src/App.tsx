@@ -4,6 +4,7 @@ import UniverseA from "./components/UniverseA.tsx";
 import UniverseB from "./components/UniverseB.tsx";
 import GameFinished from "./components/GameFinished.tsx";
 import Character from "./components/Character.tsx";
+import StartScreen from "./components/StartScreen.tsx";
 
 function App() {
   const [game, setGame] = useState<GameState>();
@@ -25,7 +26,9 @@ function App() {
 
   return (
     <div className="flex flex-col items-center min-h-screen justify-between">
-      {actualUniverse === 0 ? (
+      {game.votesToStart < 2 ? (
+        <StartScreen votes={game.votesToStart} />
+      ) : actualUniverse === 0 ? (
         <UniverseA game={game.universe[0]}>
           <Character dialog={game.dialog} />
         </UniverseA>

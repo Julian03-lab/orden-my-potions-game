@@ -24,12 +24,14 @@ export interface GameState {
   gameFinished: boolean;
   dialog: string;
   solutionsNumber: number;
+  votesToStart: number;
 }
 
 type GameActions = {
   swapUniverses: () => void;
   setResult: (status: "win" | "waiting") => void;
   sendSolution: (guess: Board) => void;
+  voteToStart: () => void;
 };
 
 declare global {
@@ -47,6 +49,7 @@ Rune.initLogic({
   maxPlayers: 2,
   setup: (allPlayerIds): GameState => {
     const game: GameState = {
+      votesToStart: 0,
       solutionsNumber: 0,
       gameFinished: false,
       votesToSwap: 0,
@@ -75,6 +78,9 @@ Rune.initLogic({
     return game;
   },
   actions: {
+    voteToStart(_, { game }) {
+      game.votesToStart++;
+    },
     swapUniverses(_, { game, playerId }) {
       game.votesToSwap++;
 
