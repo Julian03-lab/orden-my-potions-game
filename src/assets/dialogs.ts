@@ -5,9 +5,9 @@ type Dialogs = {
 };
 
 export const characterDialogs: Dialogs = {
-  playing: "Tengan MUCHO cuidado al ordenar mis pociones.",
+  playing: "Be VERY careful when ordering my potions.",
   firstSent:
-    "Uno de ustedes ya ha terminado, te recomiendo analizar la solucion mientras el otro termina.",
+    "One of you has already finished, I recommend you to analyze the solution while the other one is finishing.",
   secondSent:
-    "Ya terminaron los dos, en cuanto esten listos pueden cambiar de habitación.",
+    "Good! I see you are both done, as soon as you are ready you can change rooms.",
 };

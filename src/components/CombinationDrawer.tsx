@@ -73,7 +73,7 @@ const CombinationDrawer = ({
               // onDragStart={() => handleDragStart(color)}
             >
               <img
-                className={`w-10 h-auto ${
+                className={`w-8 h-auto ${
                   color === selectedColor ? "glow" : ""
                 }`}
                 src={colorToImage(color)}
@@ -93,7 +93,7 @@ const CombinationDrawer = ({
               // onDrop={() => handleDrop(i)}
             >
               <img
-                className={`w-10 h-auto ${status} z-10 relative`}
+                className={`w-8 h-auto ${status} z-10 relative`}
                 src={colorToImage(color)}
               />
             </button>

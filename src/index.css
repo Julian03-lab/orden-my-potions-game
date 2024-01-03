@@ -31,7 +31,7 @@ h1 {
 }
 
 .boton {
-  border: 5px solid #94dcec;
+  border: 4px solid #94dcec;
   background: radial-gradient(
     95.55% 95.46% at 50% 50%,
     #5ff0fa 0%,
@@ -43,7 +43,7 @@ h1 {
 }
 
 .boton:active {
-  border: 5px solid #94dcec;
+  border: 4px solid #94dcec;
   background: radial-gradient(
     95.55% 95.46% at 50% 50%,
     #61f6ff 0%,

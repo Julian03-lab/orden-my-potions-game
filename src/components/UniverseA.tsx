@@ -35,7 +35,7 @@ const UniverseA = ({
     guess.some((item) => item.color === "gray") || matchStatus === "waiting";
 
   return (
-    <div className="flex flex-col gap-4 items-center min-h-screen h-full px-4 py-8 w-full bg-black/50">
+    <div className="flex flex-col gap-3 items-center min-h-screen h-full px-4 py-6 w-full bg-black/50">
       <div
         className="w-full h-full fixed top-0 left-0 -z-10"
         style={{
@@ -48,39 +48,44 @@ const UniverseA = ({
       {matchStatus === "playing" || matchStatus === "waiting" ? (
         <>
           {children}
-          {!guessSent ? (
-            <>
-              <CombinationDrawer
-                combination={guess}
-                setCombination={setGuess}
-                matchStatus={matchStatus}
-              />
-              <Button disabled={isDisabled} onClick={handleSendSolution}>
-                Send Solution
-              </Button>
-            </>
-          ) : (
-            !changeSent && (
-              <Button
-                onClick={() => {
-                  Rune.actions.swapUniverses();
-                  setChangeSent(true);
-                }}
-              >
-                Vote to Change Room
-              </Button>
-            )
-          )}
-          <div className="w-full flex flex-col-reverse gap-2">
-            {board.map(
-              (row, i) => (
-                // i < board.length - 1 || matchStatus !== "waiting" ? (
-                <CombinationDrawer key={i} combination={row} />
+          <div className="flex flex-col gap-4 items-center bg-violet-500/60 py-5 px-2 rounded-xl">
+            {!guessSent ? (
+              <>
+                <CombinationDrawer
+                  combination={guess}
+                  setCombination={setGuess}
+                  matchStatus={matchStatus}
+                />
+                <Button disabled={isDisabled} onClick={handleSendSolution}>
+                  Send Solution
+                </Button>
+              </>
+            ) : (
+              !changeSent && (
+                <Button
+                  onClick={() => {
+                    Rune.actions.swapUniverses();
+                    setChangeSent(true);
+                  }}
+                >
+                  Vote to Change Room
+                </Button>
               )
-              // ) : (
-              //   <div key={i}>Esto esta oculta hasta la proxima ronda</div>
-              // )
             )}
+            {!changeSent && board.length > 0 && (
+              <div className="w-full h-px bg-white/50" />
+            )}
+            <div className="w-full flex flex-col-reverse gap-2">
+              {board.map(
+                (row, i) => (
+                  // i < board.length - 1 || matchStatus !== "waiting" ? (
+                  <CombinationDrawer key={i} combination={row} />
+                )
+                // ) : (
+                //   <div key={i}>Esto esta oculta hasta la proxima ronda</div>
+                // )
+              )}
+            </div>
           </div>
         </>
       ) : (
