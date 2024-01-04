@@ -45,7 +45,7 @@ const colors = ["red", "blue", "green", "orange", "purple"];
 const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
 
 Rune.initLogic({
-  minPlayers: 1,
+  minPlayers: 2,
   maxPlayers: 2,
   setup: (allPlayerIds): GameState => {
     const game: GameState = {

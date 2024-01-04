@@ -2,7 +2,6 @@ import { useState } from "react";
 import CombinationDrawer from "./CombinationDrawer";
 import { Board } from "../logic";
 import Button from "./Button";
-import Character from "./Character";
 
 type UniverseProps = {
   children: React.ReactNode;
@@ -48,7 +47,7 @@ const UniverseA = ({
       {matchStatus === "playing" || matchStatus === "waiting" ? (
         <>
           {children}
-          <div className="flex flex-col gap-4 items-center bg-violet-500/60 py-5 px-2 rounded-xl">
+          <div className="flex flex-col gap-4 items-center bg-violet-500/40 py-5 px-2 rounded-xl backdrop-blur-[2px]">
             {!guessSent ? (
               <>
                 <CombinationDrawer
