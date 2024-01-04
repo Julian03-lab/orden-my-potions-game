@@ -63,23 +63,18 @@ h1 {
 }
 
 .wrong {
-  -webkit-filter: drop-shadow(2px 1px 0 red) drop-shadow(-1px -1px 0 red);
-  filter: drop-shadow(2px 1px 0 red) drop-shadow(-1px -1px 0 red);
+  border-radius: 10px;
+  background: #fb7171;
 }
 
 .parcial {
-  -webkit-filter: drop-shadow(2px 1px 0 yellow) drop-shadow(-1px -1px 0 yellow);
-  filter: drop-shadow(2px 1px 0 yellow) drop-shadow(-1px -1px 0 yellow);
+  border-radius: 10px;
+  background: #fafe49;
 }
 
 .correct {
-  -webkit-filter: drop-shadow(2px 1px 0 green) drop-shadow(-1px -1px 0 green);
-  filter: drop-shadow(2px 1px 0 green) drop-shadow(-1px -1px 0 green);
-}
-
-.glow {
-  -webkit-filter: drop-shadow(0px 0px 3px yellow);
-  filter: drop-shadow(0px 0px 3px yellow);
+  border-radius: 10px;
+  background: #3dff50;
 }
 
 .mago {
@@ -99,4 +94,15 @@ h1 {
   100% {
     transform: translateY(0);
   }
+}
+
+.text {
+  color: #fff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  font-family: Irish Grover;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
 }

@@ -30,11 +30,11 @@ function App() {
         <StartScreen votes={game.votesToStart} />
       ) : actualUniverse === 0 ? (
         <UniverseA game={game.universe[0]}>
-          <Character dialog={game.dialog} />
+          <Character dialog={game.dialog} color="#D795F5" />
         </UniverseA>
       ) : (
         <UniverseB game={game.universe[1]}>
-          <Character dialog={game.dialog} />
+          <Character dialog={game.dialog} color="#79E4C4" />
         </UniverseB>
       )}
       {game.gameFinished && <GameFinished />}

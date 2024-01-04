@@ -2,6 +2,7 @@ import { useState } from "react";
 import CombinationDrawer from "./CombinationDrawer";
 import { Board } from "../logic";
 import Button from "./Button";
+import { HeartSvg } from "../assets/HeartSVG";
 
 type UniverseProps = {
   children: React.ReactNode;
@@ -34,20 +35,34 @@ const UniverseB = ({
     guess.some((item) => item.color === "gray") || matchStatus === "waiting";
 
   return (
-    <div className="flex flex-col gap-3 items-center min-h-screen h-full px-4 py-6 w-full bg-black/50">
+    <div className="flex flex-col gap-3 items-center min-h-screen h-full px-2 py-6 w-full bg-black/50">
       <div
         className="w-full h-full fixed top-0 left-0 -z-10"
         style={{
-          backgroundImage: `url(bg-2.png)`,
+          backgroundImage: `url(bg-1.jpg)`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
       />
-      {matchStatus === "playing" || matchStatus === "waiting" ? (
-        <>
-          {children}
-          <div className="flex flex-col gap-4 items-center bg-emerald-500/40 py-5 px-2 rounded-xl backdrop-blur-[2px]">
+      {children}
+      <div className="flex flex-col gap-4 items-center bg-[#79e4c4]/70 pt-3 pb-10 px-2 rounded-2xl backdrop-blur-[2px] w-full">
+        <span className="w-full flex justify-between items-center">
+          <h1 className="text">Room 2</h1>
+          <div className="relative flex">
+            <p className="text-white text-xl absolute z-10 left-1/2 -translate-x-1/2 top-1">
+              8
+            </p>
+            <HeartSvg
+              className="size-10"
+              style={{
+                filter: "drop-shadow(0px 0px 10px #00FFC2)",
+              }}
+            />
+          </div>
+        </span>
+        {matchStatus === "playing" || matchStatus === "waiting" ? (
+          <>
             {!guessSent ? (
               <>
                 <CombinationDrawer
@@ -71,46 +86,48 @@ const UniverseB = ({
                 </Button>
               )
             )}
-            {!changeSent && board.length > 0 && (
-              <div className="w-full h-px bg-white/50" />
-            )}
-            <div className="w-full flex flex-col-reverse gap-2">
+            {board.length > 0 && <h2 className="text">History</h2>}
+            <div className="w-full flex flex-col-reverse gap-5">
               {board.map(
                 (row, i) => (
                   // i < board.length - 1 || matchStatus !== "waiting" ? (
-                  <CombinationDrawer key={i} combination={row} />
+                  <>
+                    <CombinationDrawer key={i} combination={row} />
+                    <div className="w-full h-px bg-white" />
+                  </>
                 )
                 // ) : (
                 //   <div key={i}>Esto esta oculta hasta la proxima ronda</div>
                 // )
               )}
             </div>
-          </div>
-        </>
-      ) : (
-        <div className=" flex flex-col gap-4">
-          {!changeSent ? (
-            <Button
-              onClick={() => {
-                Rune.actions.swapUniverses();
-                setChangeSent(true);
-              }}
-            >
-              Change Room
-            </Button>
-          ) : (
-            <div>Esperando a que tu compañero finalize</div>
-          )}
-          <h1 className="text-center text-2xl font-bold">
-            Combinacion Correcta
-          </h1>
-          <div className="w-full flex flex-col-reverse gap-2">
-            {board.map((row, i) => (
-              <CombinationDrawer key={i} combination={row} />
-            ))}
-          </div>
-        </div>
-      )}
+          </>
+        ) : (
+          <>
+            {!changeSent ? (
+              <Button
+                onClick={() => {
+                  Rune.actions.swapUniverses();
+                  setChangeSent(true);
+                }}
+              >
+                Vote to change room
+              </Button>
+            ) : (
+              <></>
+            )}
+            <h1 className="text">Correct combination</h1>
+            <div className="w-full flex flex-col-reverse gap-5">
+              {board.map((row, i) => (
+                <>
+                  <CombinationDrawer key={i} combination={row} />
+                  <div className="w-full h-px bg-white" />
+                </>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

@@ -58,7 +58,7 @@ const CombinationDrawer = ({
   return (
     <>
       {setCombination && (
-        <div className="bg-red-400/80 flex w-full justify-between p-2 border border-black rounded-xl">
+        <div className="bg-white flex w-full justify-between rounded-xl p-2">
           {colors.map((color) => (
             <button
               key={color}
@@ -73,8 +73,8 @@ const CombinationDrawer = ({
               // onDragStart={() => handleDragStart(color)}
             >
               <img
-                className={`w-8 h-auto ${
-                  color === selectedColor ? "glow" : ""
+                className={`w-12 h-auto p-1.5 rounded-[10px] ${
+                  color === selectedColor ? "bg-[#E1DEE1]" : ""
                 }`}
                 src={colorToImage(color)}
               />
@@ -83,30 +83,26 @@ const CombinationDrawer = ({
         </div>
       )}
       <div className="flex flex-col w-full">
-        <div className="flex w-full justify-between px-2">
+        <div className="flex w-full justify-between">
           {combination.map(({ color, status }, i) => (
-            <button
-              key={i}
-              onClick={() => handleSelection(i)}
-              // draggable={false}
-              // onDragOver={handleDragOver}
-              // onDrop={() => handleDrop(i)}
-            >
+            <button key={i} onClick={() => handleSelection(i)}>
               <img
-                className={`w-8 h-auto ${status} z-10 relative`}
+                className={`w-12 h-auto p-1.5 ${status} z-10 relative`}
                 src={colorToImage(color)}
               />
             </button>
           ))}
         </div>
-        <img
-          src={EstanteImage}
-          alt="Estante"
-          className="w-full h-auto relative -top-1 z-0"
-          style={{
-            filter: "drop-shadow(0px 12px 11px rgba(0, 0, 0, 1))",
-          }}
-        />
+        {setCombination && (
+          <img
+            src={EstanteImage}
+            alt="Estante"
+            className="w-full h-auto relative -top-2 z-0"
+            style={{
+              filter: "drop-shadow(0px 12px 11px rgba(0, 0, 0, 1))",
+            }}
+          />
+        )}
       </div>
     </>
   );
