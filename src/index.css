@@ -82,6 +82,7 @@ h1 {
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  filter: drop-shadow(0px 2px 10px #00ffa3) drop-shadow(0px 4px 20px #ad00ff);
 }
 
 @keyframes levitate {
@@ -105,4 +106,50 @@ h1 {
   font-weight: 400;
   line-height: normal;
   text-align: center;
+}
+
+.helper-text {
+  color: #fff;
+  text-shadow: 0px 4px 4px #000;
+  font-family: Irish Grover;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.title {
+  background: linear-gradient(
+    136deg,
+    #bd00ff 37.21%,
+    #0091fb 58.55%,
+    #00d1ff 94.68%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  text-shadow: 0px 0px 50px #8f00ff;
+  font-family: Irish Grover;
+  font-size: 2.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: relative;
+  z-index: 1;
+}
+
+.title-shadow {
+  text-align: center;
+  color: white;
+  font-family: Irish Grover;
+  font-size: 2.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  z-index: 0;
 }

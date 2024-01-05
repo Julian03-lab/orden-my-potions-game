@@ -47,7 +47,7 @@ const UniverseB = ({
       />
       {children}
       <div className="flex flex-col gap-4 items-center bg-[#79e4c4]/70 pt-3 pb-10 px-2 rounded-2xl backdrop-blur-[2px] w-full">
-        <span className="w-full flex justify-between items-center">
+        <span className="w-full flex justify-between items-center px-2">
           <h1 className="text">Room 2</h1>
           <div className="relative flex">
             <p className="text-white text-xl absolute z-10 left-1/2 -translate-x-1/2 top-1">
