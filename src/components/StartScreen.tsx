@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import StartBG from "../assets/images/start-bg.jpg";
+import FinalModal from "./FinalModal";
 
 const StartScreen = ({ votes }: { votes: number }) => {
   const [voted, setVoted] = React.useState(false);
@@ -12,7 +13,7 @@ const StartScreen = ({ votes }: { votes: number }) => {
 
   return (
     <div
-      className="flex flex-col items-center h-min-screen py-4 px-6 w-full"
+      className="flex flex-col items-center min-h-screen py-4 px-6 w-full"
       style={{
         backgroundImage: `url(${StartBG})`,
         backgroundSize: "cover",

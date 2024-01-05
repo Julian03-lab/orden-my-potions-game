@@ -153,3 +153,12 @@ h1 {
   left: 0;
   z-index: 0;
 }
+
+.modal-bg {
+  background: linear-gradient(
+      354deg,
+      rgba(27, 1, 69, 0.8) 2.46%,
+      rgba(27, 1, 69, 0) 44%
+    ),
+    radial-gradient(74.72% 65.14% at 50.15% 71.12%, #fff 25.64%, #b579e4 63.88%);
+}

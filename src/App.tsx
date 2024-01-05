@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { GameState } from "./logic.ts";
 import UniverseA from "./components/UniverseA.tsx";
 import UniverseB from "./components/UniverseB.tsx";
-import GameFinished from "./components/GameFinished.tsx";
 import Character from "./components/Character.tsx";
 import StartScreen from "./components/StartScreen.tsx";
+import FinalModal from "./components/FinalModal.tsx";
 
 function App() {
   const [game, setGame] = useState<GameState>();
   const [actualUniverse, setActualUniverse] = useState<number>();
+  const [openModal, setOpenModal] = useState(true);
 
   useEffect(() => {
     Rune.initClient({
@@ -37,7 +38,10 @@ function App() {
           <Character dialog={game.dialog} color="#79E4C4" />
         </UniverseB>
       )}
-      {game.gameFinished && <GameFinished />}
+      <FinalModal
+        open={game.gameFinished && openModal}
+        onClose={() => setOpenModal(false)}
+      />
     </div>
   );
 }
