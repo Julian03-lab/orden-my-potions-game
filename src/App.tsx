@@ -31,17 +31,20 @@ function App() {
         <StartScreen votes={game.votesToStart} />
       ) : actualUniverse === 0 ? (
         <UniverseA game={game.universe[0]}>
-          <Character dialog={game.dialog} color="#D795F5" />
+          <Character dialog={"hola chicos"} color="#D795F5" />
         </UniverseA>
       ) : (
         <UniverseB game={game.universe[1]}>
-          <Character dialog={game.dialog} color="#79E4C4" />
+          <Character dialog={"hola chicos"} color="#79E4C4" />
         </UniverseB>
       )}
-      <FinalModal
-        open={game.gameFinished && openModal}
-        onClose={() => setOpenModal(false)}
-      />
+      {game.gameFinished !== null && (
+        <FinalModal
+          result={game.gameFinished}
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+        />
+      )}
     </div>
   );
 }

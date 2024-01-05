@@ -10,11 +10,12 @@ type UniverseProps = {
     board: Board[];
     matchStatus: "win" | "lose" | "playing" | "waiting";
     secretResult: string[];
+    remainingAttempts: number;
   };
 };
 
 const UniverseB = ({
-  game: { board, matchStatus },
+  game: { board, matchStatus, remainingAttempts },
   children,
 }: UniverseProps) => {
   const [guess, setGuess] = useState<Board>(
@@ -51,7 +52,7 @@ const UniverseB = ({
           <h1 className="text">Room 2</h1>
           <div className="relative flex">
             <p className="text-white text-xl absolute z-10 left-1/2 -translate-x-1/2 top-1">
-              8
+              {remainingAttempts}
             </p>
             <HeartSvg
               className="size-10"

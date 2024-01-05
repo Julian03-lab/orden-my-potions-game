@@ -3,6 +3,7 @@ import { checkResults } from "./utils/checkResults";
 import { characterDialogs } from "./assets/dialogs";
 
 const CELLS = 5;
+const ATTEMPTS = 5;
 
 export type Board = {
   status: "empty" | "parcial" | "correct" | "wrong";
@@ -18,10 +19,11 @@ export interface GameState {
       board: Board[];
       matchStatus: "win" | "playing" | "waiting";
       secretResult: string[];
+      remainingAttempts: number;
     };
   };
   votesToSwap: number;
-  gameFinished: boolean;
+  gameFinished: null | "WON" | "LOST";
   dialog: string;
   solutionsNumber: number;
   votesToStart: number;
@@ -51,17 +53,19 @@ Rune.initLogic({
     const game: GameState = {
       votesToStart: 0,
       solutionsNumber: 0,
-      gameFinished: false,
+      gameFinished: null,
       votesToSwap: 0,
       dialog: characterDialogs.playing,
       players: {},
       universe: {
         0: {
+          remainingAttempts: ATTEMPTS,
           board: initialBoard,
           secretResult: Array(CELLS).fill("").map(randomColor),
           matchStatus: "playing",
         },
         1: {
+          remainingAttempts: ATTEMPTS,
           board: initialBoard,
           secretResult: Array(CELLS).fill("").map(randomColor),
           matchStatus: "playing",
@@ -133,11 +137,28 @@ Rune.initLogic({
       }
 
       if (Object.values(game.universe).every((u) => u.matchStatus === "win")) {
-        game.gameFinished = true;
+        game.gameFinished = "WON";
         Rune.gameOver({
           players: {
             [allPlayerIds[0]]: "WON",
             [allPlayerIds[1]]: "WON",
+          },
+          delayPopUp: true,
+        });
+        return;
+      }
+
+      game.universe[playerUniverse].remainingAttempts--;
+
+      if (
+        game.universe[0].remainingAttempts === 0 ||
+        game.universe[1].remainingAttempts === 0
+      ) {
+        game.gameFinished = "LOST";
+        Rune.gameOver({
+          players: {
+            [allPlayerIds[0]]: "LOST",
+            [allPlayerIds[1]]: "LOST",
           },
           delayPopUp: true,
         });

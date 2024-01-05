@@ -11,3 +11,8 @@ export const characterDialogs: Dialogs = {
   secondSent:
     "Good! I see you are both done, as soon as you are ready you can change rooms.",
 };
+
+export const endDialogs = {
+  WON: ["Oh no! You have found the secret formula!", "You have won!"],
+  LOST: ["Haha! You will never find the secret formula!", "You have lost!"],
+};

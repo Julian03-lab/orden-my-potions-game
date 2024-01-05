@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DialogSVG } from "../assets/dialogSVG";
 import { StarsModalBg } from "../assets/starsModalBg";
+import { endDialogs } from "../assets/dialogs";
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  result: "WON" | "LOST";
 };
 
-const FinalModal = ({ onClose, open }: Props) => {
+const FinalModal = ({ onClose, open, result }: Props) => {
+  const [displayText, setDisplayText] = useState(endDialogs[result][0]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDisplayText(endDialogs[result][1]);
+      setTimeout(() => {
+        Rune.showGameOverPopUp();
+      }, 2000);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [result]);
+
   return (
     <div
       className={`fixed inset-0 items-center justify-center z-50 bg-black/80 px-6 ${
@@ -25,8 +42,8 @@ const FinalModal = ({ onClose, open }: Props) => {
         </button>
         <DialogSVG className="w-full" />
         <StarsModalBg className="absolute bottom-3" />
-        <h2 className="text-2xl text-black mb-4 absolute z-10 px-16 pt-5 text-center">
-          Congratulations on your victory
+        <h2 className="text-xl text-black absolute px-2 z-10 text-center top-8">
+          {displayText}
         </h2>
         <img
           src="mago-final.png"
