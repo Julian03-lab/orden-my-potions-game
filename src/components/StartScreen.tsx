@@ -23,7 +23,7 @@ const StartScreen = ({ votes }: { votes: number }) => {
           backgroundPosition: "center",
         }}
       >
-        <img src="Logo.png" alt="Logo" className="h-48" />
+        <img src="logo.svg" alt="Logo" className="h-48" />
         <img src="mago.png" alt="Mago" className="w-56 mago my-7" />
         <div className="w-full flex flex-col gap-4">
           <Button onClick={startGame} disabled={voted}>
