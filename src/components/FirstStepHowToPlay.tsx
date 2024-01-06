@@ -45,7 +45,7 @@ const FirstStepHowToPlay = () => {
           />
         </div>
         <div className="flex flex-col items-center absolute -top-11 -right-2">
-          <p className="text-sm text-white">Intentos</p>
+          <p className="text-sm text-white">Attempts</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"

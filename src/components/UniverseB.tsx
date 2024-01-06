@@ -40,7 +40,7 @@ const UniverseB = ({
       <div
         className="w-full h-full fixed top-0 left-0 -z-10"
         style={{
-          backgroundImage: `url(bg-1.jpg)`,
+          backgroundImage: `url(bg-2.jpg)`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",

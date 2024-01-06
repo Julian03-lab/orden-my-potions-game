@@ -31,7 +31,7 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
               />
             </svg>
           </button>
-          <h1 className="text-lg text-white self-center">Reglas del juego</h1>
+          <h1 className="text-lg text-white self-center">Game rules</h1>
           <img
             src="logo.svg"
             alt="Logo"
@@ -40,14 +40,14 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
           <div className="">
             <div className="relative">
               <p className="text-sm text-black w-full px-3 pt-4 relative z-30">
-                ¡Insolentes! Han desordenado mis pociones mágicas y ahora
-                pagarán las consecuencias. Vuestra tarea es organizar las
-                pociones adivinando la combinación de colores original. Ambos
-                jugadores estarán en habitaciones diferentes y deberán ir
-                alternándose mientras encuentran la solución. Tienen 8 intentos
-                para lograrlo. Si lo hacen, saldrán ilesos. Pero si no, sufrirán
-                un hechizo de 10 años de mala suerte. ¡Que empiece el desafío y
-                que la magia esté de su lado!
+                ¡Insolent ones! They have disordered my magic potions, and now
+                they will pay the consequences. Your task is to organize the
+                potions by guessing the original color combination. Both players
+                will be in different rooms and must take turns while finding the
+                solution. They have 8 attempts to achieve it. If they do, they
+                will come out unscathed. But if not, they will suffer a 10-year
+                spell of bad luck. Let the challenge begin, and may magic be on
+                their side!
               </p>
               <DialogContainer className="absolute top-0 h-[140%] w-full" />
             </div>
@@ -61,18 +61,18 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
             </div>
           </div>
           <div>
-            <p className="text-lg text-white mb-1.5">Como se juega</p>
+            <p className="text-lg text-white mb-1.5">How To Play</p>
             <p className="text-sm text-white">
-              Selecciona el color que prefieras del panel de pociones, luego
-              elige donde lo quieres poner, una vez hayas terminado de crear una
-              combinación presiona el botón enviar solución.{" "}
+              Select the color you prefer from the potion panel, then choose
+              where you want to place it. Once you have finished creating a
+              combination, press the 'Submit Solution' button.
             </p>
           </div>
           <FirstStepHowToPlay />
           <div>
             <p className="text-sm text-white">
-              Luego se mostrara el historial de tus combinaciones donde se
-              mostraran las pistas del juego
+              Then you will be able to see the history of your combinations
+              where the game clues will be shown.
             </p>
             <div className="flex justify-between w-full mt-6">
               <div className="flex flex-col items-center max-w-24">
@@ -81,7 +81,7 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
                   className="px-1.5 py-2 rounded-xl bg-[#3DFF50]"
                 />
                 <p className="text-white text-sm text-center mt-4">
-                  El color y posición son correctos
+                  The color and position are correct
                 </p>
               </div>
               <div className="flex flex-col items-center max-w-24">
@@ -90,7 +90,7 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
                   className="px-1.5 py-2 rounded-xl bg-[#FBFF3D]"
                 />
                 <p className="text-white text-sm text-center mt-4">
-                  El color es correcto pero no la posición
+                  The color is correct but the position is not
                 </p>
               </div>
               <div className="flex flex-col items-center max-w-24">
@@ -99,17 +99,17 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
                   className="px-1.5 py-2 rounded-xl bg-[#EC0505]"
                 />
                 <p className="text-white text-sm text-center mt-4">
-                  Ni el color ni la posición son correctas.
+                  Neither the color nor the position are correct
                 </p>
               </div>
             </div>
           </div>
           <SecondStepHowToPlay />
           <p className="text-sm text-white">
-            Ambas habitaciones deben tener la combinación correcta para ganar
+            Both rooms must have the correct combination to win
           </p>
           <ThirdStepHowToPlay />
-          <Button onClick={() => setOpen(false)}>Volver</Button>
+          <Button onClick={() => setOpen(false)}>Go Back</Button>
         </div>
       )}
     </>

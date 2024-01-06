@@ -5,6 +5,7 @@ import UniverseB from "./components/UniverseB.tsx";
 import Character from "./components/Character.tsx";
 import StartScreen from "./components/StartScreen.tsx";
 import FinalModal from "./components/FinalModal.tsx";
+import ReactHowler from "react-howler";
 
 function App() {
   const [game, setGame] = useState<GameState>();
@@ -31,11 +32,11 @@ function App() {
         <StartScreen votes={game.votesToStart} />
       ) : actualUniverse === 0 ? (
         <UniverseA game={game.universe[0]}>
-          <Character dialog={"hola chicos"} color="#D795F5" />
+          <Character dialog={game.dialog} color="#D795F5" />
         </UniverseA>
       ) : (
         <UniverseB game={game.universe[1]}>
-          <Character dialog={"hola chicos"} color="#79E4C4" />
+          <Character dialog={game.dialog} color="#79E4C4" />
         </UniverseB>
       )}
       {game.gameFinished !== null && (
@@ -45,6 +46,12 @@ function App() {
           onClose={() => setOpenModal(false)}
         />
       )}
+      <ReactHowler
+        src="soundtrack.mp3"
+        playing={true}
+        loop={true}
+        volume={0.5}
+      />
     </div>
   );
 }
