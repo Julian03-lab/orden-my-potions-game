@@ -69,8 +69,6 @@ const CombinationDrawer = ({
                   setSelectedColor(color);
                 }
               }}
-              // draggable={true}
-              // onDragStart={() => handleDragStart(color)}
             >
               <img
                 className={`w-12 h-auto p-1.5 rounded-[10px] ${
