@@ -75,7 +75,7 @@ const CombinationDrawer = ({
             >
               <img
                 className={`w-12 h-auto p-1.5 rounded-[10px] ${
-                  color === selectedColor ? "bg-[#E1DEE1]" : ""
+                  color === selectedColor ? "seleccionado" : ""
                 }`}
                 src={colorToImage(color)}
               />

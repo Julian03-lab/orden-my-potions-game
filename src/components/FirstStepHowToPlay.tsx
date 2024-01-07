@@ -68,7 +68,7 @@ const FirstStepHowToPlay = () => {
           <button key={color}>
             <img
               className={`w-12 h-auto p-1.5 rounded-[10px] ${
-                color === "red" ? "bg-[#E1DEE1]" : ""
+                color === "red" ? "seleccionado" : ""
               }`}
               src={colorToImage(color)}
             />
