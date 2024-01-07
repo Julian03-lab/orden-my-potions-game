@@ -46,12 +46,12 @@ function App() {
           onClose={() => setOpenModal(false)}
         />
       )}
-      <ReactHowler
+      {/* <ReactHowler
         src="soundtrack.mp3"
         playing={true}
         loop={true}
         volume={0.5}
-      />
+      /> */}
     </div>
   );
 }

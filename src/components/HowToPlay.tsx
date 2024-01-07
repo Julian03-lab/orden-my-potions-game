@@ -5,6 +5,7 @@ import FirstStepHowToPlay from "./FirstStepHowToPlay";
 import PurplePotion from "../assets/images/greenPotion.png";
 import SecondStepHowToPlay from "./SecondStepHowToPlay";
 import ThirdStepHowToPlay from "./ThirdStepHowToPlay";
+import { sounds } from "../utils/sounds";
 
 type HowToPlayProps = {
   open: boolean;
@@ -109,7 +110,14 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
             Both rooms must have the correct combination to win
           </p>
           <ThirdStepHowToPlay />
-          <Button onClick={() => setOpen(false)}>Go Back</Button>
+          <Button
+            onClick={() => {
+              sounds.click.play();
+              setOpen(false);
+            }}
+          >
+            Go Back
+          </Button>
         </div>
       )}
     </>

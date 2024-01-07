@@ -3,6 +3,7 @@ import CombinationDrawer from "./CombinationDrawer";
 import { Board } from "../logic";
 import Button from "./Button";
 import { HeartSvg } from "../assets/HeartSVG";
+import { sounds } from "../utils/sounds";
 
 type UniverseProps = {
   children: React.ReactNode;
@@ -28,6 +29,7 @@ const UniverseA = ({
   const [changeSent, setChangeSent] = useState<boolean>(false);
 
   const handleSendSolution = () => {
+    sounds.click.play();
     Rune.actions.sendSolution(guess);
     setGuessSent(true);
   };
@@ -79,6 +81,7 @@ const UniverseA = ({
               !changeSent && (
                 <Button
                   onClick={() => {
+                    sounds.click.play();
                     Rune.actions.swapUniverses();
                     setChangeSent(true);
                   }}
@@ -108,6 +111,7 @@ const UniverseA = ({
             {!changeSent ? (
               <Button
                 onClick={() => {
+                  sounds.click.play();
                   Rune.actions.swapUniverses();
                   setChangeSent(true);
                 }}

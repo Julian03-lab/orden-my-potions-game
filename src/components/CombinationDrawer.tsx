@@ -7,6 +7,7 @@ import BluePotion from "../assets/images/bluePotion.png";
 import YellowPotion from "../assets/images/yellowPotion.png";
 import RedPotion from "../assets/images/redPotion.png";
 import EmptyPotion from "../assets/images/emptyPotion.png";
+import { sounds } from "../utils/sounds";
 
 type CombinationDrawerProps = {
   combination: Board;
@@ -46,6 +47,7 @@ const CombinationDrawer = ({
       matchStatus === "playing" &&
       setCombination((prev) => {
         const newCombination = [...prev];
+        sounds.drop.play();
         newCombination[index] = {
           ...newCombination[index],
           color: selectedColor,
@@ -66,6 +68,7 @@ const CombinationDrawer = ({
                 if (selectedColor === color) {
                   setSelectedColor("");
                 } else {
+                  sounds.drop.play();
                   setSelectedColor(color);
                 }
               }}

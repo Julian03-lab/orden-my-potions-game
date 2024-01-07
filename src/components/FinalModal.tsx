@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DialogSVG } from "../assets/dialogSVG";
 import { StarsModalBg } from "../assets/starsModalBg";
 import { endDialogs } from "../assets/dialogs";
+import { sounds } from "../utils/sounds";
 
 type Props = {
   open: boolean;
@@ -13,6 +14,7 @@ const FinalModal = ({ onClose, open, result }: Props) => {
   const [displayText, setDisplayText] = useState(endDialogs[result][0]);
 
   useEffect(() => {
+    result === "WON" ? sounds.success.play() : sounds.error.play();
     const timer = setTimeout(() => {
       setDisplayText(endDialogs[result][1]);
       setTimeout(() => {

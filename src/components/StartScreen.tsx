@@ -2,12 +2,14 @@ import React from "react";
 import Button from "./Button";
 import StartBG from "../assets/images/start-bg.jpg";
 import HowToPlay from "./HowToPlay";
+import { sounds } from "../utils/sounds";
 
 const StartScreen = ({ votes }: { votes: number }) => {
   const [voted, setVoted] = React.useState(false);
   const [howToPlayOpen, setHowToPlayOpen] = React.useState(false);
 
   const startGame = () => {
+    sounds.click.play();
     Rune.actions.voteToStart();
     setVoted(true);
   };
