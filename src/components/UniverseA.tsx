@@ -4,9 +4,10 @@ import { Board } from "../logic";
 import Button from "./Button";
 import { HeartSvg } from "../assets/HeartSVG";
 import { sounds } from "../utils/sounds";
+import Character from "./Character";
+import { WizardQuotes, characterDialogs } from "../assets/dialogs";
 
 type UniverseProps = {
-  children: React.ReactNode;
   game: {
     board: Board[];
     matchStatus: "win" | "lose" | "playing" | "waiting";
@@ -17,7 +18,6 @@ type UniverseProps = {
 
 const UniverseA = ({
   game: { board, matchStatus, remainingAttempts },
-  children,
 }: UniverseProps) => {
   const [guess, setGuess] = useState<Board>(
     Array(5).fill({
@@ -27,11 +27,26 @@ const UniverseA = ({
   );
   const [guessSent, setGuessSent] = useState<boolean>(false);
   const [changeSent, setChangeSent] = useState<boolean>(false);
+  const [wizarDialog, setWizarDialog] = useState<string>(
+    matchStatus === "win"
+      ? WizardQuotes[Math.floor(Math.random() * WizardQuotes.length)]
+      : characterDialogs.playing
+  );
 
   const handleSendSolution = () => {
+    setWizarDialog(characterDialogs.firstSent);
     sounds.click.play();
     Rune.actions.sendSolution(guess);
     setGuessSent(true);
+  };
+
+  const handleSwap = () => {
+    if (matchStatus !== "win") {
+      setWizarDialog(characterDialogs.secondSent);
+    }
+    sounds.click.play();
+    Rune.actions.swapUniverses();
+    setChangeSent(true);
   };
 
   const isDisabled =
@@ -48,7 +63,7 @@ const UniverseA = ({
           backgroundPosition: "center",
         }}
       />
-      {children}
+      <Character dialog={wizarDialog} color="#D795F5" />
       <div className="flex flex-col gap-4 items-center bg-[#D795F5]/70 pt-3 pb-10 px-2 rounded-2xl backdrop-blur-[2px] w-full">
         <span className="w-full flex justify-between items-center px-2">
           <h1 className="text">Room 1</h1>
@@ -79,15 +94,7 @@ const UniverseA = ({
               </>
             ) : (
               !changeSent && (
-                <Button
-                  onClick={() => {
-                    sounds.click.play();
-                    Rune.actions.swapUniverses();
-                    setChangeSent(true);
-                  }}
-                >
-                  Vote to Change Room
-                </Button>
+                <Button onClick={handleSwap}>Vote to Change Room</Button>
               )
             )}
             {board.length > 0 && <h2 className="text">History</h2>}
@@ -109,15 +116,7 @@ const UniverseA = ({
         ) : (
           <>
             {!changeSent ? (
-              <Button
-                onClick={() => {
-                  sounds.click.play();
-                  Rune.actions.swapUniverses();
-                  setChangeSent(true);
-                }}
-              >
-                Vote to change room
-              </Button>
+              <Button onClick={handleSwap}>Vote to change room</Button>
             ) : (
               <></>
             )}

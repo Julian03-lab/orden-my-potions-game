@@ -45,7 +45,7 @@ const HowToPlay = ({ open, setOpen }: HowToPlayProps) => {
                 they will pay the consequences. Your task is to organize the
                 potions by guessing the original color combination. Both players
                 will be in different rooms and must take turns while finding the
-                solution. They have 8 attempts to achieve it. If they do, they
+                solution. They have 5 attempts to achieve it. If they do, they
                 will come out unscathed. But if not, they will suffer a 10-year
                 spell of bad luck. Let the challenge begin, and may magic be on
                 their side!

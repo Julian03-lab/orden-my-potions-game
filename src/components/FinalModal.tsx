@@ -33,7 +33,7 @@ const FinalModal = ({ onClose, open, result }: Props) => {
         open ? "flex" : "hidden"
       }`}
     >
-      <div className="modal-bg rounded-[20px] relative overflow-hidden flex flex-col items-center h-[393px] w-full">
+      <div className="modal-bg rounded-[20px] relative overflow-hidden flex flex-col items-center w-full pb-4">
         <button onClick={onClose} className="absolute top-4 right-3 z-20">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path
@@ -42,15 +42,17 @@ const FinalModal = ({ onClose, open, result }: Props) => {
             />
           </svg>
         </button>
-        <DialogSVG className="w-full" />
+        <div className="relative py-4">
+          <DialogSVG className="w-full absolute top-0 h-[155%]" />
+          <h2 className="text-lg text-black px-6 pb-4 text-center relative z-30">
+            {displayText}
+          </h2>
+        </div>
         <StarsModalBg className="absolute bottom-3" />
-        <h2 className="text-xl text-black absolute px-2 z-10 text-center top-8">
-          {displayText}
-        </h2>
         <img
           src="mago-final.png"
           alt="mago final"
-          className="absolute bottom-3"
+          className="relative z-30 mt-4"
         />
       </div>
     </div>
