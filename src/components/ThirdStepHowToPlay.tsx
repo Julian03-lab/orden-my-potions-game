@@ -1,5 +1,4 @@
 import { HeartSvg } from "../assets/HeartSVG";
-import EstanteImage from "../assets/images/estante.png";
 import GreenPotion from "../assets/images/greenPotion.png";
 import PurplePotion from "../assets/images/pinkPotion.png";
 import BluePotion from "../assets/images/bluePotion.png";
@@ -7,7 +6,6 @@ import YellowPotion from "../assets/images/yellowPotion.png";
 import RedPotion from "../assets/images/redPotion.png";
 import EmptyPotion from "../assets/images/emptyPotion.png";
 import Button from "./Button";
-import { HandSvg } from "../assets/handSvg";
 
 // const colors = ["red", "blue", "green", "orange", "purple"];
 

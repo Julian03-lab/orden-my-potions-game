@@ -10,7 +10,7 @@ type Props = {
   result: "WON" | "LOST";
 };
 
-const FinalModal = ({ onClose, open, result }: Props) => {
+const FinalModal = ({ open, result }: Props) => {
   const [displayText, setDisplayText] = useState(endDialogs[result][0]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const FinalModal = ({ onClose, open, result }: Props) => {
       setDisplayText(endDialogs[result][1]);
       setTimeout(() => {
         Rune.showGameOverPopUp();
-      }, 2000);
+      }, 3000);
     }, 2000);
 
     return () => {
@@ -34,14 +34,14 @@ const FinalModal = ({ onClose, open, result }: Props) => {
       }`}
     >
       <div className="modal-bg rounded-[20px] relative overflow-hidden flex flex-col items-center w-full pb-4">
-        <button onClick={onClose} className="absolute top-4 right-3 z-20">
+        {/* <button onClick={onClose} className="absolute top-4 right-3 z-20">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path
               d="M1.4 14L0 12.6L5.6 7L0 1.4L1.4 0L7 5.6L12.6 0L14 1.4L8.4 7L14 12.6L12.6 14L7 8.4L1.4 14Z"
               fill="black"
             />
           </svg>
-        </button>
+        </button> */}
         <div className="relative py-4">
           <DialogSVG className="w-full absolute top-0 h-[155%]" />
           <h2 className="text-lg text-black px-6 pb-4 text-center relative z-30">

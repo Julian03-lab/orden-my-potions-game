@@ -1,5 +1,4 @@
 import { HeartSvg } from "../assets/HeartSVG";
-import EstanteImage from "../assets/images/estante.png";
 import GreenPotion from "../assets/images/greenPotion.png";
 import PurplePotion from "../assets/images/pinkPotion.png";
 import BluePotion from "../assets/images/bluePotion.png";

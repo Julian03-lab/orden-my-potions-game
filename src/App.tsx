@@ -4,7 +4,6 @@ import UniverseA from "./components/UniverseA.tsx";
 import UniverseB from "./components/UniverseB.tsx";
 import StartScreen from "./components/StartScreen.tsx";
 import FinalModal from "./components/FinalModal.tsx";
-import ReactHowler from "react-howler";
 
 function App() {
   const [game, setGame] = useState<GameState>();
@@ -36,7 +35,7 @@ function App() {
       )}
       {game.gameFinished !== null && (
         <FinalModal
-          result={"LOST"}
+          result={game.gameFinished}
           open={openModal}
           onClose={() => setOpenModal(false)}
         />
